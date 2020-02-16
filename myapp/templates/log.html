@@ -1,0 +1,31 @@
+{% extends 'temp2.html' %}
+
+{% block content %}
+     </body>
+
+     <style>
+   table, th, td {
+     border: 1px solid black;
+   }
+   </style>
+
+
+   <div class="container">
+     <h3>Location Requests</h3>
+     <table style="width:100%">
+         <tr>
+             <th>Location</th>
+       <th>No of request</th>
+
+         </tr>
+{% for key, value in dictionary.items %}
+     <tr>
+         <td>  {{ key}}   </td>
+   <td>{{value}} </td>
+
+       </tr>
+     {% endfor %}
+   </table>
+
+   <a href="{%  url 'index'%}" class="btn btn-primary">Back</a>
+   {% endblock %}

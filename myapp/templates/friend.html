@@ -1,0 +1,42 @@
+   {% extends 'temp.html' %}
+
+{% block content %}
+
+
+
+  <h3>Normal Requests</h3>
+
+
+
+<form method = "post" enctype="multipart/form-data" >
+    {% csrf_token %}
+    {{ form.as_p }}
+
+
+    <button type="submit"  >Upload</button>
+
+</form>
+  <button onclick="getLocation()">Try It</button>
+<a href="{%  url 'index'%}" class="btn btn-primary">Back</a>
+
+
+
+
+<script>
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    x.value = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+document.getElementById("location").value = "Latitude: " + position.coords.latitude +
+  "<br>Longitude: " + position.coords.longitude;
+}
+
+// document.getElementById("location").value = getLocation();
+</script>
+
+{% endblock %}

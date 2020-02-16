@@ -1,0 +1,60 @@
+{% extends 'temp3.html' %}
+
+{% block content %}
+
+ <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script> -->
+
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
+ <style>
+table, th, td {
+ border: 1px solid black;
+}
+</style>
+
+
+<h3> Top Contributors </h3>
+<table style="width:100%">
+ <tr>
+
+<th>Name </th>
+
+<th> Reward</th>
+
+
+
+ </tr>
+
+{% for student in details %}
+<tr>
+
+<td>{{student.user }} </td>
+
+<td>
+	<form method="POST">
+      {%csrf_token%}
+    <input type="hidden" name="student_name" value={{ student.user }}>
+    <input type="submit" value="pay" name="pay">
+
+  </form>
+</td>
+
+
+
+
+
+</tr>
+{% endfor %}
+</table>
+
+<br><br>
+
+<a href="{%  url 'index'%}" class="btn btn-primary">Back</a>
+
+{% endblock %}
